@@ -46,7 +46,7 @@
   /* Playfair Display — strong display serif for headings                   */
   /* Source Serif 4 — readable body serif for long-form content             */
   /* DM Sans — clean UI sans for labels, nav, buttons                       */
-  --font-display:  'Playfair Display', Georgia, serif;
+  --font-display:  'Libre Baskerville', Georgia, serif;
   --font-serif:    'Source Serif 4', Georgia, serif;
   --font-sans:     'DM Sans', system-ui, sans-serif;
 

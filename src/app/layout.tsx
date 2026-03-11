@@ -1,18 +1,31 @@
 import type { Metadata } from 'next';
+import { Libre_Baskerville, Source_Serif_4, DM_Sans } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
-import '@fontsource/playfair-display/700.css';
-import '@fontsource/playfair-display/800.css';
-import '@fontsource/source-serif-4/400.css';
-import '@fontsource/source-serif-4/400-italic.css';
-import '@fontsource/source-serif-4/600.css';
-import '@fontsource/source-serif-4/600-italic.css';
-import '@fontsource/dm-sans/400.css';
-import '@fontsource/dm-sans/500.css';
-import '@fontsource/dm-sans/600.css';
-import '@fontsource/dm-sans/700.css';
 import { defaultMetadata } from '@/lib/seo/metadata';
 import { GA_MEASUREMENT_ID } from '@/lib/site';
+
+const fontDisplay = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const fontSerif = Source_Serif_4({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
+  display: 'swap',
+});
+
+const fontSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = defaultMetadata;
 
@@ -22,7 +35,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps): React.ReactElement {
   return (
-    <html lang="en">
+    <html lang="en" className={`${fontDisplay.variable} ${fontSerif.variable} ${fontSans.variable}`}>
       <body className="font-sans text-[var(--text)] bg-[var(--cream)] antialiased">
         {children}
         {GA_MEASUREMENT_ID && (
