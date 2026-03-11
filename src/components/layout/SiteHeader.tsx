@@ -61,7 +61,8 @@ export function SiteHeader(): React.ReactElement {
               <span className="text-xs">&#9660;</span>
             </button>
             {servicesOpen && (
-              <div className="absolute top-full left-0 mt-1 w-52 bg-white border border-[var(--border)] shadow-lg z-50">
+              <div className="absolute top-full left-0 pt-2 w-52 z-50">
+                <div className="bg-white border border-[var(--border)] shadow-lg">
                 {SERVICE_LINKS.map((link) => (
                   <Link
                     key={link.href}
@@ -72,6 +73,7 @@ export function SiteHeader(): React.ReactElement {
                     {link.label}
                   </Link>
                 ))}
+                </div>
               </div>
             )}
           </div>

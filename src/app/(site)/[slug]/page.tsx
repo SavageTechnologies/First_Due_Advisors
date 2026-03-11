@@ -68,7 +68,6 @@ export default async function ServicePage({ params }: PageProps): Promise<React.
         <ServicePillarContent service={service} />
         <CtaBlock variant="mid" heading={`Ready to explore ${service.title}?`} />
         <TestimonialsBlock testimonials={testimonials} />
-        <CtaBlock variant="bottom" />
       </PageShell>
     </>
   );
