@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getServices } from '@/lib/data/services';
 import { getTestimonials } from '@/lib/data/testimonials';
 import { buildPageMetadata } from '@/lib/seo/metadata';
@@ -71,10 +72,15 @@ export default async function HomePage(): Promise<React.ReactElement> {
       {/* About teaser */}
       <section className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 items-center">
-          <div className="bg-[var(--cream-warm)] border border-[var(--border-warm)] aspect-[4/3] flex items-center justify-center">
-            <p className="text-sm text-[var(--text-muted)] font-sans">
-              Photo placeholder
-            </p>
+          <div className="relative aspect-[3/4] overflow-hidden border border-[var(--border-warm)]">
+            <Image
+              src="/images/brandon-grimes.jpg"
+              alt={`${AUTHOR_NAME} — ${AUTHOR_TITLE}`}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
           <div className="flex flex-col gap-5">
             <p className="text-xs font-bold uppercase tracking-widest text-accent">

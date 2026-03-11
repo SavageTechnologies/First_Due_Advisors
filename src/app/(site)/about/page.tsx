@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { buildPersonSchema, buildOrganizationSchema, buildBreadcrumbSchema } from '@/lib/seo/schema';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -48,10 +49,15 @@ export default function AboutPage(): React.ReactElement {
         <div className="flex flex-col gap-10">
           {/* Photo + intro */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 items-start">
-            <div className="bg-[var(--cream-warm)] border border-[var(--border-warm)] aspect-[3/4] flex items-center justify-center">
-              <p className="text-sm text-[var(--text-muted)] font-sans">
-                {AUTHOR_NAME} photo
-              </p>
+            <div className="relative aspect-[3/4] overflow-hidden border border-[var(--border-warm)]">
+              <Image
+                src="/images/brandon-grimes.jpg"
+                alt={`${AUTHOR_NAME} — ${AUTHOR_TITLE}`}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 40vw"
+                priority
+              />
             </div>
             <div className="flex flex-col gap-4">
               <h2 className="font-display text-2xl font-bold text-[var(--text)]">
