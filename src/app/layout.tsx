@@ -36,7 +36,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps): React.ReactElement {
   return (
     <html lang="en" className={`${fontDisplay.variable} ${fontSerif.variable} ${fontSans.variable}`}>
-      <body className="font-sans text-[var(--text)] bg-white antialiased">
+      <body className="font-sans text-[var(--text)] bg-[var(--cream)] antialiased">
         {children}
         {GA_MEASUREMENT_ID && (
           <>
