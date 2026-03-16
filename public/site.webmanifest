@@ -1,0 +1,22 @@
+{
+  "name": "First Due Advisors",
+  "short_name": "First Due",
+  "description": "Firefighter-owned insurance brokerage specializing in Medicare, health, life, annuities, and estate planning.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F2044",
+  "theme_color": "#0F2044",
+  "icons": [
+    {
+      "src": "/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

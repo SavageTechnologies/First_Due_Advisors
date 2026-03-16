@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { Service } from '@/types/service';
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from '@/lib/site';
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, SITE_TAGLINE } from '@/lib/site';
 
 interface PageMetadataOptions {
   title: string;
@@ -96,5 +96,16 @@ export const defaultMetadata: Metadata = {
   openGraph: {
     siteName: SITE_NAME,
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
   },
 };

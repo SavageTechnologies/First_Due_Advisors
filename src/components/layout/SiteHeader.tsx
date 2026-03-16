@@ -36,9 +36,28 @@ export function SiteHeader(): React.ReactElement {
     <header className="sticky top-0 z-50 bg-primary border-b-2 border-accent shadow-md">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0" onClick={closeMenu}>
-          <span className="font-display font-bold text-white text-lg leading-tight">
-            {SITE_NAME}
+        <Link href="/" aria-label={`${SITE_NAME} — Home`} className="flex items-center gap-3 shrink-0" onClick={closeMenu}>
+          <svg
+            viewBox="0 0 56 60"
+            width="40"
+            height="43"
+            aria-hidden="true"
+            className="flex-shrink-0"
+          >
+            <path d="M28 2L4 11v18c0 16 10 27 24 29 14-2 24-13 24-29V11L28 2z" fill="white"/>
+            <rect x="22" y="24" width="12" height="12" fill="#B91C1C"/>
+            <polygon points="24,10 32,10 31,24 25,24" fill="#B91C1C"/>
+            <polygon points="25,36 31,36 32,50 24,50" fill="#B91C1C"/>
+            <polygon points="8,25 8,31 22,30 22,26" fill="#B91C1C"/>
+            <polygon points="34,26 34,30 48,31 48,25" fill="#B91C1C"/>
+          </svg>
+          <span className="flex flex-col leading-none">
+            <span className="font-display font-bold text-white text-lg tracking-tight">
+              First Due
+            </span>
+            <span className="font-sans text-accent text-[10px] tracking-[0.2em] uppercase">
+              Advisors
+            </span>
           </span>
         </Link>
 

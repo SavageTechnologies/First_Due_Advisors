@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Shield background - deep navy primary -->
+  <path d="M16 2L4 7v9c0 7 5.5 12.5 12 14 6.5-1.5 12-7 12-14V7L16 2z" fill="#0F2044"/>
+  
+  <!-- Shield highlight / depth -->
+  <path d="M16 3.5L5.5 8v8c0 6.2 4.8 11.2 10.5 12.8C22.2 27.2 27 22.2 27 16V8L16 3.5z" fill="none" stroke="#1A3260" stroke-width="0.8"/>
+  
+  <!-- Maltese cross / first responder cross in red accent -->
+  <!-- Center square -->
+  <rect x="13" y="13" width="6" height="6" fill="#B91C1C"/>
+  <!-- Top arm -->
+  <polygon points="14,9 18,9 17.5,13 14.5,13" fill="#B91C1C"/>
+  <!-- Bottom arm -->
+  <polygon points="14.5,19 17.5,19 18,23 14,23" fill="#B91C1C"/>
+  <!-- Left arm -->
+  <polygon points="9,14 9,18 13,17.5 13,14.5" fill="#B91C1C"/>
+  <!-- Right arm -->
+  <polygon points="19,14.5 19,17.5 23,18 23,14" fill="#B91C1C"/>
+  
+  <!-- Top arm v-notches (Maltese style) -->
+  <polygon points="14,9 16,11 18,9 17,9.8 16,9 15,9.8" fill="#0F2044"/>
+  <!-- Bottom arm v-notches -->
+  <polygon points="14,23 16,21 18,23 17,22.2 16,23 15,22.2" fill="#0F2044"/>
+  <!-- Left arm v-notches -->
+  <polygon points="9,14 11,16 9,18 9.8,17 9,16 9.8,15" fill="#0F2044"/>
+  <!-- Right arm v-notches -->
+  <polygon points="23,14 21,16 23,18 22.2,17 23,16 22.2,15" fill="#0F2044"/>
+
+  <!-- Shield border outline -->
+  <path d="M16 2L4 7v9c0 7 5.5 12.5 12 14 6.5-1.5 12-7 12-14V7L16 2z" fill="none" stroke="#B91C1C" stroke-width="0.75" opacity="0.6"/>
+</svg>
