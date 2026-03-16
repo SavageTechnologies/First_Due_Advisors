@@ -1,17 +1,14 @@
 /**
  * app/api/contact/route.ts
  * Public POST endpoint for the contact form.
- * Processing order: validate -> rate limit -> insert lead -> send emails -> 200
+ * Processing order: validate -> insert lead -> send emails -> 200
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { Ratelimit } from '@upstash/ratelimit';
-import { Redis } from '@upstash/redis';
 import { submitLead } from '@/lib/leads/submit';
 import { sendLeadNotification, sendLeadConfirmation } from '@/lib/leads/notify';
 import { TCPA_VERSION } from '@/lib/compliance';
-import { UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN } from '@/lib/site';
 
 const SERVICE_VALUES = [
   'medicare-plans',
@@ -37,27 +34,6 @@ const contactSchema = z.object({
 
 type ContactPayload = z.infer<typeof contactSchema>;
 
-function getRatelimiter(): Ratelimit {
-  const redis = new Redis({
-    url: UPSTASH_REDIS_REST_URL,
-    token: UPSTASH_REDIS_REST_TOKEN,
-  });
-
-  return new Ratelimit({
-    redis,
-    limiter: Ratelimit.slidingWindow(5, '1 h'),
-    analytics: false,
-  });
-}
-
-function getClientIp(req: NextRequest): string {
-  const forwarded = req.headers.get('x-forwarded-for');
-  if (forwarded) {
-    return forwarded.split(',')[0].trim();
-  }
-  return 'unknown';
-}
-
 export async function POST(req: NextRequest): Promise<NextResponse> {
   // 1. Parse and validate
   let body: unknown;
@@ -81,19 +57,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   const data: ContactPayload = parsed.data;
 
-  // 2. Rate limit
-  const ip = getClientIp(req);
-  const ratelimiter = getRatelimiter();
-  const { success: allowed } = await ratelimiter.limit(`contact:${ip}`);
-
-  if (!allowed) {
-    return NextResponse.json(
-      { error: 'Too many requests. Please try again later or call us directly.' },
-      { status: 429 },
-    );
-  }
-
-  // 3. Insert lead
+  // 2. Insert lead
   const submitResult = await submitLead({
     name: data.name,
     email: data.email,
@@ -116,7 +80,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     );
   }
 
-  // Build a minimal Lead shape for email functions
   const lead = {
     id: submitResult.id ?? '',
     created_at: new Date().toISOString(),
@@ -133,12 +96,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     notes: null,
   };
 
-  // 4. Notify Brandon (fire-and-forget — failure must not block the response)
+  // 3. Notify Brandon (fire-and-forget)
   void sendLeadNotification(lead);
 
-  // 5. Confirmation to visitor (always send — email is required field)
+  // 4. Confirmation to visitor
   void sendLeadConfirmation(lead);
 
-  // 6. Success
+  // 5. Success
   return NextResponse.json({ success: true }, { status: 200 });
 }
