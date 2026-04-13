@@ -22,16 +22,16 @@ export const SITE_DESCRIPTION: string =
 // ─── Contact Info ─────────────────────────────────────────────────────────────
 
 export const SUPPORT_PHONE: string =
-  process.env.NEXT_PUBLIC_SUPPORT_PHONE ?? '(555) 000-0000';
+  process.env.NEXT_PUBLIC_SUPPORT_PHONE ?? '(615) 714-9076';
 
 export const SUPPORT_PHONE_HREF: string =
-  process.env.NEXT_PUBLIC_SUPPORT_PHONE_HREF ?? 'tel:+15550000000';
+  process.env.NEXT_PUBLIC_SUPPORT_PHONE_HREF ?? 'tel:+16157149076';
 
 export const SUPPORT_EMAIL: string =
-  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? 'info@firstdueadvisors.com';
+  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? 'brandon@firstdueadvisors.com';
 
 export const BUSINESS_ADDRESS: string =
-  process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ?? 'City, State';
+  process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ?? 'P.O. BOX 94 Mt. Juliet, TN, 37121';
 
 // ─── CTAs & Messaging ────────────────────────────────────────────────────────
 
@@ -68,7 +68,7 @@ export const LICENSED_ENTITY_NAME: string =
   process.env.NEXT_PUBLIC_LICENSED_ENTITY_NAME ?? 'First Due Advisors';
 
 export const LICENSED_STATES: string =
-  process.env.NEXT_PUBLIC_LICENSED_STATES ?? 'State, State, State';
+  process.env.NEXT_PUBLIC_LICENSED_STATES ?? 'Tennessee';
 
 // ─── Supabase ────────────────────────────────────────────────────────────────
 
@@ -93,7 +93,7 @@ export const RESEND_FROM_NAME: string =
   process.env.RESEND_FROM_NAME ?? 'First Due Advisors';
 
 export const RESEND_LEAD_NOTIFY_EMAIL: string =
-  process.env.RESEND_LEAD_NOTIFY_EMAIL ?? 'leads@firstdueadvisors.com';
+  process.env.RESEND_LEAD_NOTIFY_EMAIL ?? 'brandon@firstdueadvisors.com';
 
 // ─── Analytics ───────────────────────────────────────────────────────────────
 
